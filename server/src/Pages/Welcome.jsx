@@ -12,7 +12,7 @@ const Welcome = () => {
           <h2 className="text-xl px-7">To Do List</h2>
         </div>
         <div></div>
-        <div className="px-12 animate-bounce">
+        <div className=" flex justify-center items-center animate-bounce">
           <Link to={"/todo"}>
             <CustomButton button={"Get Started"} />
           </Link>
