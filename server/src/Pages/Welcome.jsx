@@ -2,7 +2,6 @@ import React from "react";
 import CustomButton from "../Components/CustomButton";
 import { Link } from "react-router-dom";
 
-
 const Welcome = () => {
   return (
     <>
