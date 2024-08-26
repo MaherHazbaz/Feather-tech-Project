@@ -11,7 +11,7 @@ const Index = () => {
   const [editText, setEditText] = useState(""); // Track the new text for the item being edited
   const [todos, setTodos] = useState([]);
 
-  const base_url = "http://localhost:5174";
+  const base_url = "http://localhost:5176";
 
   const handleTodo = async () => {
     try {
@@ -71,7 +71,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-6xl font-thin mb-6">To Do List</h1>
+      <h1 className="text-3xl font-bold mb-6">To Do List</h1>
       <div className="flex space-x-2 mb-6 ">
         <CustomInput
           type="text"
