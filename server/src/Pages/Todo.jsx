@@ -71,7 +71,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-6xl font-thin mb-6">To Do List</h1>
+      <h1 className="text-6xl font-thin mb-6">To Do List</h1> <br />
       <div className="flex space-x-2 mb-6 ">
         <CustomInput
           type="text"
