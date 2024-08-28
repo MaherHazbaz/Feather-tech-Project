@@ -85,7 +85,6 @@ const Index = () => {
           className="bg-blue-500 text-white py-2 px-4 rounded"
         />
       </div>
-
       <div className="w-full max-w-md space-y-4">
         {todos?.map((data) => (
           <div
