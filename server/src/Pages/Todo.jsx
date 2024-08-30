@@ -11,7 +11,7 @@ const Index = () => {
   const [editText, setEditText] = useState(""); // Track the new text for the item being edited
   const [todos, setTodos] = useState([]);
 
-  const base_url = "http://localhost:5176";
+  const base_url = "http://localhost:5173";
 
   const handleTodo = async () => {
     try {
