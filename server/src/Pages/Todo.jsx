@@ -11,7 +11,7 @@ const Index = () => {
   const [editText, setEditText] = useState(""); // Track the new text for the item being edited
   const [todos, setTodos] = useState([]);
 
-  const base_url = "https://api.maher.life";
+  const base_url = "https://feather-tech-project-backend.vercel.app";
 
   const handleTodo = async () => {
     try {
@@ -30,7 +30,7 @@ const Index = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const reg_todo = await axios.get(`https://api.maher.life`);
+        const reg_todo = await axios.get(`${base_url}`);
         setTodos(reg_todo?.data?.data);
       } catch (error) {
         console.log(error);
