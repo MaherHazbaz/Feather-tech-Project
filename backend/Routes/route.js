@@ -4,7 +4,7 @@ const {
   updateTodo,
   deleteTodo,
   findAllTodo,
-} = require("../controller/controller");
+} = require("../Controller/controller");
 const router = express.Router();
 
 router.route("/").get(findAllTodo).post(createTodo).put(updateTodo);
