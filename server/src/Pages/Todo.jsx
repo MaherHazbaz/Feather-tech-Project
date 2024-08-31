@@ -11,17 +11,16 @@ const Index = () => {
   const [editText, setEditText] = useState(""); // Track the new text for the item being edited
   const [todos, setTodos] = useState([]);
 
-  const base_url = "http://localhost:5173";
+  const base_url = "http://localhost:3000";
 
   const handleTodo = async () => {
     try {
       if (todo.length !== 0) {
-        const response = await axios.post(`${base_url}`, { todo });
-        setTodos([...todos, response.data.data]); // Add the new todo to the state
-        setTodo(""); // Clear the input field after adding a todo
-        setEmp(""); // Clear the empty state
+        await axios.post(`${base_url}`, { todo });
+        window.location.reload();
       } else {
-        setEmp("Don't leave the text field empty");
+        const emp = "Don't leave the text field empty";
+        setEmp(emp);
       }
     } catch (error) {
       console.log(error.message);
@@ -41,20 +40,15 @@ const Index = () => {
   }, []);
 
   const handleEdit = (data) => {
-    setEditId(data._id); // Set the ID of the item being edited
-    setEditText(data.todo); // Set the current text of the item in the edit state
+    setEditId(data._id);
+    setEditText(data.todo);
   };
 
   const handleUpdate = async (data) => {
     try {
       await axios.put(`${base_url}`, { id: data._id, todo: editText });
-      setTodos(
-        todos.map((todo) =>
-          todo._id === data._id ? { ...todo, todo: editText } : todo
-        )
-      ); // Update the todo in the state
-      setEditId(null); // Clear the edit state after updating
-      setEditText(""); // Clear the edit text field
+      setEditId(null);
+      window.location.reload();
     } catch (error) {
       console.log(error.message);
     }
@@ -63,7 +57,7 @@ const Index = () => {
   const handleDelete = async (data) => {
     try {
       await axios.delete(`${base_url}/${data._id}`);
-      setTodos(todos.filter((todo) => todo._id !== data._id)); // Remove the deleted todo from the state
+      window.location.reload();
     } catch (error) {
       console.log(error.message);
     }
@@ -72,24 +66,22 @@ const Index = () => {
   return (
     <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
       <h1 className="text-6xl font-thin mb-6">To Do List</h1> <br />
-      <div className="flex space-x-2 mb-6 ">
+      <div className="flex space-x-2 mb-6   ">
         <CustomInput
           type="text"
           value={todo}
-          placeholder={empty || "Add a new task"} // If empty state is set, it will be displayed in red
+          placeholder={empty || "Add a new task"}
           onChange={(e) => setTodo(e.target.value)}
         />
         <CustomButton
-          button="Add"
-          onClick={handleTodo}
-          className="bg-blue-500 text-white py-2 px-4 rounded"
-        />
+        button={"Add"}
+        onClick={handleTodo}/>
       </div>
       <div className="w-full max-w-md space-y-4">
         {todos?.map((data) => (
           <div
             key={data._id}
-            className="flex justify-between items-center p-4 bg-white shadow-md rounded-lg"
+            className="grid grid-flow-col justify-between items-center  "
           >
             {editId === data._id ? (
               <CustomInput
@@ -103,22 +95,21 @@ const Index = () => {
             <div className="flex space-x-2">
               {editId === data._id ? (
                 <CustomButton
-                  button="Update"
+                  button={"Update"}
                   onClick={() => handleUpdate(data)}
-                  className="bg-green-500 text-white py-1 px-3 rounded"
                 />
               ) : (
                 <>
-                  <CustomButton
-                    button="Edit"
-                    onClick={() => handleEdit(data)}
-                    className="bg-yellow-400 text-white py-1 px-3 rounded"
-                  />
-                  <CustomButton
-                    button="Delete"
-                    onClick={() => handleDelete(data)}
-                    className="bg-red-500 text-white py-1 px-3 rounded"
-                  />
+                  <div className=" grid grid-flow-col space-x-2">
+                    <CustomButton
+                      button={"Edit"}
+                      onClick={() => handleEdit(data)}
+                    />
+                    <CustomButton
+                      button={"Delete"}
+                      onClick={() => handleDelete(data)}
+                    />
+                  </div>
                 </>
               )}
             </div>
