@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import CustomInput from "../components/CustomInput";
-import CustomButton from "../components/CustomButton";
+import CustomInput from "../Components/CustomInput";
+import CustomButton from "../Components/CustomButton";
 
 const Index = () => {
   const [todo, setTodo] = useState("");
@@ -73,9 +73,7 @@ const Index = () => {
           placeholder={empty || "Add a new task"}
           onChange={(e) => setTodo(e.target.value)}
         />
-        <CustomButton
-        button={"Add"}
-        onClick={handleTodo}/>
+        <CustomButton button={"Add"} onClick={handleTodo} />
       </div>
       <div className="w-full max-w-md space-y-4">
         {todos?.map((data) => (
