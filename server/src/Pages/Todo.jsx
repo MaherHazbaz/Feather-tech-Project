@@ -30,7 +30,7 @@ const Index = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const reg_todo = await axios.get(`${base_url}`);
+        const reg_todo = await axios.get(`https://api.maher.life`);
         setTodos(reg_todo?.data?.data);
       } catch (error) {
         console.log(error);

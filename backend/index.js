@@ -10,7 +10,11 @@ const route = require("./Routes/route");
 dotenv.config({ path: path.join(__dirname, ".", ".env") });
 
 //cors
-app.use(cors());
+var corsOptions = {
+  origin: "https://client.maher.life",
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.options("*", cors());
 
 //middleware
