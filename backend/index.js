@@ -11,8 +11,10 @@ dotenv.config({ path: path.join(__dirname, ".", ".env") });
 
 //cors
 var corsOptions = {
-  origin: "https://client.maher.life",
-  optionsSuccessStatus: 200,
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
 app.options("*", cors());
